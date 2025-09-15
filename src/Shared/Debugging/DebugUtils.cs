@@ -139,7 +139,7 @@ namespace Microsoft.Build.Shared.Debugging
                 string resolvedPath = Path.GetFullPath(debugPath);
                 string currentDir = Path.GetFullPath(Directory.GetCurrentDirectory());
 
-                return resolvedPath.StartsWith(currentDir, StringComparison.OrdinalIgnoreCase);
+                return resolvedPath.StartsWith(currentDir, StringComparison.Ordinal);
             }
             catch (Exception)
             {
