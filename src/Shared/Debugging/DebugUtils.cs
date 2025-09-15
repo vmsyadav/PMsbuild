@@ -133,23 +133,13 @@ namespace Microsoft.Build.Shared.Debugging
             {
                 return false;
             }
+
             try
             {
                 string resolvedPath = Path.GetFullPath(debugPath);
                 string currentDir = Path.GetFullPath(Directory.GetCurrentDirectory());
 
-                // Check if currentDir is root path (e.g., "/" or "C:\") to avoid matching all absolute paths
-                if (currentDir == Path.GetPathRoot(currentDir))
-                {
-                    return false;
-                }
-
-                // Add trailing separator to ensure strict prefix match
-                string currentDirWithSep = currentDir.EndsWith(Path.DirectorySeparatorChar.ToString())
-                    ? currentDir
-                    : currentDir + Path.DirectorySeparatorChar;
-
-                return resolvedPath.StartsWith(currentDirWithSep, StringComparison.Ordinal);
+                return resolvedPath.StartsWith(currentDir, StringComparison.OrdinalIgnoreCase);
             }
             catch (Exception)
             {
