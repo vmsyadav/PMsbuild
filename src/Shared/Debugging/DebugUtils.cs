@@ -149,7 +149,7 @@ namespace Microsoft.Build.Shared.Debugging
                     ? currentDir
                     : currentDir + Path.DirectorySeparatorChar;
 
-                return resolvedPath.StartsWith(currentDirWithSep, StringComparison.OrdinalIgnoreCase);
+                return resolvedPath.StartsWith(currentDirWithSep, StringComparison.Ordinal);
             }
             catch (Exception)
             {
